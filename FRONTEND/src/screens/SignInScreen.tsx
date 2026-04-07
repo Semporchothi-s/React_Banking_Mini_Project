@@ -35,7 +35,9 @@ const SignInScreen = (): React.ReactElement => {
         return Object.values(errors).every(value => value === "");
     }
 
-    async function onLoginHandler() {
+    async function onLoginHandler(e?: React.FormEvent) {
+        e?.preventDefault();
+
         if (!validateField()) {
             return;
         }
@@ -54,23 +56,23 @@ const SignInScreen = (): React.ReactElement => {
     }
     return (
         <div className='container'>
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={onLoginHandler}>
                 <h1>Login</h1>
-                <TextField type="text" name="email" value={formField.email} onChange={onChangeHandler} error={fieldError.email} />
-                <TextField type="password" name="password" value={formField.password} onChange={onChangeHandler} error={fieldError.password} />
+                <TextField type="text" label="Email" name="email" value={formField.email} onChange={onChangeHandler} error={fieldError.email} />
+                <TextField type="password" label="Password" name="password" value={formField.password} onChange={onChangeHandler} error={fieldError.password} />
 
-                <ActionButtons onLoginHandler={onLoginHandler} onRegisterNavigate={onRegisterNavigate} />
+                <ActionButtons onRegisterNavigate={onRegisterNavigate} />
 
             </form >
         </div >
     )
 }
 
-const ActionButtons = ({ onLoginHandler, onRegisterNavigate }: { onLoginHandler: () => void, onRegisterNavigate: () => void }): React.ReactElement => {
+const ActionButtons = ({ onRegisterNavigate }: { onRegisterNavigate: () => void }): React.ReactElement => {
 
     return (
         <div className="d-flex flex-column">
-            <Button color='primary' onClick={onLoginHandler}>
+            <Button color='primary' type="submit">
                 Login to your account
             </Button>
             

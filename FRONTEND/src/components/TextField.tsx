@@ -10,7 +10,7 @@ const TextField = ({ name, label, error, ...rest }: TextFieldProps): React.React
     return (
         <>
             <label htmlFor={name} className="form-label text-muted">{label || name}</label>
-            <input className='form-control' name={name} id={name} {...rest} />
+            <input className='form-control mb-2' name={name} id={name} {...rest} />
             {error && <p style={{ color: 'red', fontSize: '0.875em', marginTop: '4px' }}>{error}</p>}
         </>
     )

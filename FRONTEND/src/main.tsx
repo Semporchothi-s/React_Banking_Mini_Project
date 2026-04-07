@@ -19,9 +19,10 @@ axios.interceptors.response.use(
 
     // 401 Unauthorized or 403 Forbidden means the token expired or is invalid
     if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-      console.error("Session expired or invalid token. Redirecting to login.");
-      // Redirect the user back to the login page
-      window.location.href = "/"; 
+      if (window.location.pathname !== "/") {
+        console.error("Session expired or invalid token. Redirecting to login.");
+        window.location.href = "/";
+      }
     }
     return Promise.reject(error);
   }

@@ -83,11 +83,11 @@ const SignupScreen = (): React.ReactElement => {
         <div className='container'>
             <form onSubmit={(e) => e.preventDefault()}>
                 <h1>Register</h1>
-                <TextField type="text" name="email" value={formField.email} onChange={onChangeHandler} error={FieldError.email} />
-                <TextField type="text" name="name" value={formField.name} onChange={onChangeHandler} error={FieldError.name} />
-                <TextField type="text" name="accountNumber" value={formField.accountNumber} onChange={onChangeHandler} error={FieldError.accountNumber} />
-                <TextField type="password" name="password" value={formField.password} onChange={onChangeHandler} error={FieldError.password} />
-                <TextField type="password" name="confirmPassword" value={formField.confirmPassword} onChange={onChangeHandler} error={FieldError.confirmPassword} />
+                <TextField type="text" label="Email" name="email" value={formField.email} onChange={onChangeHandler} error={FieldError.email} />
+                <TextField type="text" label="Name" name="name" value={formField.name} onChange={onChangeHandler} error={FieldError.name} />
+                <TextField type="text" label="Account Number" name="accountNumber" value={formField.accountNumber} onChange={onChangeHandler} error={FieldError.accountNumber} />
+                <TextField type="password" label="Password" name="password" value={formField.password} onChange={onChangeHandler} error={FieldError.password} />
+                <TextField type="password" label="Confirm Password" name="confirmPassword" value={formField.confirmPassword} onChange={onChangeHandler} error={FieldError.confirmPassword} />
                 <Container height={24} width={0} />
                 <Button color='primary' onClick={onSignupHandler}>
                     Sign up
